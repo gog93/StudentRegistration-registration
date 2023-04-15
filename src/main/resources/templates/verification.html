@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>Verification complited!</br>
+        Your email has been verified successfully.</p>
+    <a th:href="@{'/api/registration/step2?token='+ ${token}}">Continue registration</a>
+
+</body>
+</html>
