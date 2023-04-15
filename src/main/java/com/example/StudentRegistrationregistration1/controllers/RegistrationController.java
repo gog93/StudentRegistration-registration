@@ -104,14 +104,15 @@ public class RegistrationController {
 
     @PostMapping("/step3")
     public String lastStep(@RequestParam(name = "token") String regId, RegistrationRequestPart3 request,
-                           @RequestParam("upload") MultipartFile multipartFile) throws IOException {
+                           @RequestParam("upload") MultipartFile multipartFile, Model model) throws IOException {
         registrationService.registrationPart3(regId, request, multipartFile);
-        return "redirect:/api/registration/step1";
+        model.addAttribute("token", regId);
+        return "checkEmail";
     }
 
     @GetMapping("/verify_email")
-    public ResponseEntity<String> verifyEmail(@RequestParam(name = "token") String token) {
-        return ResponseEntity.ok(registrationService.verifyRegToken(token));
+    public String verifyEmail(@RequestParam(name = "token") String token) {
+        return "success";
     }
 
 }

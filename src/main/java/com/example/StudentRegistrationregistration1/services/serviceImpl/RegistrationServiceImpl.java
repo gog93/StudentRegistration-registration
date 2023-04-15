@@ -111,7 +111,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                     .build();
             verificationTokenRepository.save(verificationToken);
             String BASE_URL = "http://" + ServerRequest.getServerName() + ":" + ServerRequest.getServerPort()
-                    + "api/registration/verify_email";
+                    + "/api/registration/verify_email";
             SendEmailRequestDto emailRequest = SendEmailRequestDto.builder()
                     .subject("Verify email")
                     .body(BASE_URL + "?token=" + verification_token)
